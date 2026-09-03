@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geo:ital@0;1&display=swap');
+
+:root {
+	--bg: #f5f6f8;
+	--bar: #ffrgb(4, 142, 255);
+	--card: #ffffff;
+	--text: #2c2c2c;
+	--text-dim: #6b7280;
+	--line: #e5e7eb;
+	--kcal: #1d9e75;
+	--protein: #378add;
+	--carbs: #ef9f27;
+	--fat: #e94011;
+	--radius: 14px;
+	--pad: 16px;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.hidden {
+	display: none !important;
+}
+
+.ueberschrift {
+	text-align: center;
+	background: var(--fat);
+}
+
+.add-container {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	top: 50%;
+	left: 50%;
+	z-index: 100;
+	height: 400px;
+	width: 700px;
+	transform: translate(-50%, -50%);
+	background-color: var(--text);
+	padding: 15px;
+	gap: 6px;
+	border-radius: 20px;
+}
+
+.add-container form {
+	display: flex;
+	gap: 2px;
+}
+
+.add-container form input {
+	flex: 1;
+	min-width: 0;
+}
+
+#pflSettings {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	min-height: 0;
+	max-height: 50%;
+}
+
+.overlay {
+	position: absolute;
+	inset: 0;
+	z-index: 99;
+	background: rgb(255, 255, 255, 0.8);
+}
+
+.app {
+	position: relative;
+	padding: 15px;
+	width: 100%;
+	max-width: 800px;
+	background-color: var(--text);
+	color: var(--bg);
+}
+
+
+.makros {
+	width: 100%;
+	height: 100px;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	padding: 8px;
+	background-color: var(--text-dim);
+}
+
+.bar {
+	flex: 1;
+	min-height: 0;
+	position: relative;
+	background-color: var(--bg);
+	border-radius: 50px;
+	overflow: hidden;
+}
+
+.bar-fill {
+	height: 100%;
+	width: 0%;
+	border-radius: inherit;
+	background-color: var(--protein);
+	transition: width .5s ease;
+}
+
+.bar-text {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 12px;
+	font-size: 0.75rem;
+	color: var(--text);
+	pointer-events: none;
+}
+
+#bottom-bar {
+	position: relative;
+	display: flex;
+
+	align-items: center;
+	justify-content: space-evenly;
+	width: 100%;
+	height: 50px;
+	background: var(--bar);
+	border-top: 5px solid var(--line);
+	top: 100%;
+}
+
+#tagesliste {
+	height: 200px;
+	overflow-y: auto;
+	overscroll-behavior: contain;
+	-webkit-overflow-scrolling: touch;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	scrollbar-width: thin;
+	scrollbar-color: var(--fat) transparent;
+}
+
+#ergebnisse {
+	flex: 1;
+	min-height: 0;
+	overflow-y: auto;
+}
+
+
+h1,
+h2 {
+	text-align: center;
+	background-color: var(--fat);
+	border-radius: 50px;
+}
+
+.tage-navigation {
+	position: relative;
+	display: flex;
+
+	align-items: center;
+	justify-content: space-evenly;
+	width: 100%;
+	height: 50px;
+}
+
+body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	height: 100dvh;
+	-webkit-tap-highlight-color: transparent;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	font-size: 16px;
+	line-height: 1.4;
+	color: var(--text);
+	background: var(--bg);
+	overflow: hidden;
+
+
+}
+
+#barcode-scanner {
+	position: absolute;
+	inset: 0;
+	z-index: 10;
+	overflow: hidden;
+	background: #000;
+	border-radius: inherit;
+}
+
+#barcode-scanner:empty {
+	display: none;
+}
+
+#barcode-scanner video {
+	width: 100% !important;
+	height: 100% !important;
+	object-fit: cover;
+	display: block;
+}
+
+
+ul {
+	list-style: none;
+}
+
+li {
+	display: flex;
+	justify-content: space-between;
+}
+
+input,
+button {
+	font: inherit;
+}
