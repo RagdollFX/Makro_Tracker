@@ -18,9 +18,11 @@ export function zeigeErgebnisse(produkte) {
 
 export function setColors(farben){
   document.documentElement.style.setProperty("--accentCol", farben.akzent);
-  document.documentElement.style.setProperty("--text", farben.bg);
+  document.documentElement.style.setProperty("--bgApp", farben.bg);
+  document.documentElement.style.setProperty("--text", farben.text);
   document.getElementById("akzent-farbe").value = farben.akzent;
   document.getElementById("bg-farbe").value = farben.bg;
+  document.getElementById("text-farbe").value = farben.text;
 }
 
 export function render(eintraege, ziele, tag){

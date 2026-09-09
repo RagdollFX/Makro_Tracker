@@ -8,18 +8,38 @@ export function speicherFarben(farben){
 }
 
 export function ladeFarben(){
-  const daten = localStorage.getItem("farben");
-  if (daten == null){
-    return{
+  const standard = {
       akzent: "#e94011",
-      bg: "#2c2c2c"
-    }
+      bg: "#2c2c2c",
+      text: "#f5f6f8"
+    };
+
+  const daten = localStorage.getItem("farben");
+  if (daten == null)return standard;
+
+  try{
+    return {...standard, ...JSON.parse(daten)};
+  } catch (err){
+    console.warn("Farben unlesbar, starte mit Base", err);
+    return standard;
   }
+}
+
+export function speicherName(name){
+  localStorage.setItem("name", JSON.stringify(name));
+}
+
+export function ladeName(){
+  const standard = "Gast";
+  const daten = localStorage.getItem("name");
+
+  if(daten == null) return standard;
 
   try{
     return JSON.parse(daten);
-  } catch (err){
-    console.warn("Farben unlesbar, starte mit Base", err);
+  } catch(err){
+    console.warn("Name konnte nicht geladen werden, starte mit Base", err);
+    return standard;
   }
 }
 

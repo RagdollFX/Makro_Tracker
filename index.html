@@ -21,7 +21,7 @@
 
 <body>
 	<div class="app">
-		<h1>MAKRO - TRACKER</h1>
+		<h1 id="title"></h1>
 
 		<div class="overlay hidden" id="overlay"></div>
 
@@ -65,9 +65,13 @@
 					<input type="text" name="gProt" inputmode="numeric">
 				</div>
 				<button type="submit">MAKROS UPDATEN</button>
+				<div class="profile">
+					<span>Name:</span><input type="text" id="profileName">
+				</div>
 				<div class="color-picker">
 					<div><span>Akzente:</span><input type="color" id="akzent-farbe" value="#e94011"></div>
 					<div><span>Hintergrund:</span><input type="color" id="bg-farbe" value="#2c2c2c"></div>
+					<div><span>Texte:</span><input type="color" id="text-farbe" value="#2c2c2c"></div>
 				</div>
 			</form>
 		</div>

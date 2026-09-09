@@ -6,6 +6,7 @@ import * as Scanner from "./scanner.js"
 let eintraege = Speicher.ladenEintraege();
 let ziele = Speicher.ladenZiele();
 let farben = Speicher.ladeFarben();
+let name = Speicher.ladeName();
 const ergebnisse = document.getElementById("ergebnisse")
 const form = document.getElementById("such-form");
 const barcodeForm = document.getElementById("barcode-form");
@@ -45,15 +46,28 @@ const addContainer = document.querySelector(".add-container");
 const pflContainer = document.getElementById("pfl-container");
 const overlay = document.getElementById("overlay");
 
+document.getElementById("title").innerText = `Hallo ${name}!`;
+
+document.getElementById("profileName").addEventListener("change", (e) => {
+    name = e.target.value;
+    document.getElementById("title").innerText = `Hallo ${name}!`;
+    Speicher.speicherName(name);
+})
+
 document.getElementById("akzent-farbe").addEventListener("input", (e) => {
     document.documentElement.style.setProperty("--accentCol", e.target.value);
     farben.akzent = e.target.value;
 });
 
 document.getElementById("bg-farbe").addEventListener("input", (e) => {
-    document.documentElement.style.setProperty("--text", e.target.value);
+    document.documentElement.style.setProperty("--bgApp", e.target.value);
     farben.bg = e.target.value;
 });
+
+document.getElementById("text-farbe").addEventListener("input", (e) => {
+    document.documentElement.style.setProperty("--text", e.target.value);
+    farben.text = e.target.value;
+})
 
 formPfl.addEventListener("submit", async(e) => {
     e.preventDefault();
@@ -82,6 +96,7 @@ pflButton.addEventListener("click", () => {
     formPfl.elements.gCarbs.value = ziele.carbGoal;
     formPfl.elements.gFat.value = ziele.fatGoal;
     formPfl.elements.gKalorien.value = ziele.kalGoal;
+    document.getElementById("profileName").value = name;
 })
 
 addButton.addEventListener("click", () => {
