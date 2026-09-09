@@ -5,6 +5,7 @@ import * as Scanner from "./scanner.js"
 
 let eintraege = Speicher.ladenEintraege();
 let ziele = Speicher.ladenZiele();
+let farben = Speicher.ladeFarben();
 const ergebnisse = document.getElementById("ergebnisse")
 const form = document.getElementById("such-form");
 const barcodeForm = document.getElementById("barcode-form");
@@ -37,11 +38,22 @@ function zeigeDatum(){
 }
 
 zeigeDatum();
+Render.setColors(farben);
 Render.render(eintraege, ziele, heute);
 
 const addContainer = document.querySelector(".add-container");
 const pflContainer = document.getElementById("pfl-container");
 const overlay = document.getElementById("overlay");
+
+document.getElementById("akzent-farbe").addEventListener("input", (e) => {
+    document.documentElement.style.setProperty("--accentCol", e.target.value);
+    farben.akzent = e.target.value;
+});
+
+document.getElementById("bg-farbe").addEventListener("input", (e) => {
+    document.documentElement.style.setProperty("--text", e.target.value);
+    farben.bg = e.target.value;
+});
 
 formPfl.addEventListener("submit", async(e) => {
     e.preventDefault();
@@ -85,6 +97,8 @@ overlay.addEventListener("click", () => {
     suchStatus.innerText = "";
     form.reset();
     Scanner.stop();
+    Speicher.speicherFarben(farben);
+    console.log(farben)
 })
 
 heuteButton.addEventListener("click", () => {

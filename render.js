@@ -1,11 +1,5 @@
 const ergebnisse = document.getElementById("ergebnisse");
 const tagesliste = document.getElementById("tagesliste");
-const protZiel = "170";
-const kcalZiel = "2000";
-const fatZiel = "50";
-const carbsZiel = "50";
-const summe = document.getElementById("summe");
-const kcalBar = document.getElementById("kcal-fill");
 
 export function zeigeErgebnisse(produkte) {
   ergebnisse.replaceChildren();
@@ -22,6 +16,13 @@ export function zeigeErgebnisse(produkte) {
   }
 };
 
+export function setColors(farben){
+  document.documentElement.style.setProperty("--accentCol", farben.akzent);
+  document.documentElement.style.setProperty("--text", farben.bg);
+  document.getElementById("akzent-farbe").value = farben.akzent;
+  document.getElementById("bg-farbe").value = farben.bg;
+}
+
 export function render(eintraege, ziele, tag){
     tagesliste.replaceChildren();
     const filteredEintraege = eintraege.filter(e => e.datum === tag);
@@ -31,7 +32,7 @@ export function render(eintraege, ziele, tag){
         const carbs = Math.round((e.carbs / 100) * e.gramm);
         const fat = Math.round((e.fat / 100) * e.gramm);
         const li = document.createElement("li");
-        li.innerText = `${e.name} | Menge: ${e.gramm}g | Kalorien: ${kcal}kcal | Proteine: ${protein} | Carbs: ${carbs} | Fat: ${fat}`;
+        li.innerHTML = `<div class="eintrag"><div class="titel">${e.name} | ${e.gramm}g</div><div class="makro-text">${kcal}kcal | Proteine: ${protein}g | Carbs: ${carbs}g | Fette: ${fat}g</div></div>`;
         li.dataset.id = e.id;
         const del = document.createElement("button");
         del.innerText = "X";
