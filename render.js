@@ -42,13 +42,13 @@ export function render(eintraege, ziele, tag){
         li.append(del);
         tagesliste.append(li);
     }
-    const gesamtKcal = filteredEintraege.reduce((s, e) => s + (e.kcal100 * e.gramm / 100), 0);
-    const anteilKcal = Math.min(gesamtKcal / ziele.kalGoal, 1);
+    const gesamtKcal = (filteredEintraege.reduce((s, e) => s + (e.kcal100 * e.gramm / 100), 0)).toFixed(1);
+    const anteilKcal = (Math.min(gesamtKcal / ziele.kalGoal, 1)).toFixed(1);
     const gesamtProt = filteredEintraege.reduce((s, e) => s + (e.protein * e.gramm / 100), 0);
-    const anteilProt = Math.min(gesamtProt / ziele.protGoal, 1);
-    const gesamtCarbs = filteredEintraege.reduce((s, e) => s + (e.carbs * e.gramm / 100), 0);
+    const anteilProt = (Math.min(gesamtProt / ziele.protGoal, 1)).toFixed(1);
+    const gesamtCarbs = (filteredEintraege.reduce((s, e) => s + (e.carbs * e.gramm / 100), 0)).toFixed(1);
     const anteilCarbs = Math.min(gesamtCarbs / ziele.carbGoal, 1);
-    const gesamtFat = filteredEintraege.reduce((s, e) => s + (e.fat * e.gramm / 100), 0);
+    const gesamtFat = (filteredEintraege.reduce((s, e) => s + (e.fat * e.gramm / 100), 0)).toFixed(1);
     const anteilFett = Math.min(gesamtFat / ziele.fatGoal, 1);
     document.getElementById("protein-fill").style.width = (anteilProt * 100) + '%';
     document.getElementById("protein-wert").innerText = `${gesamtProt} / ${ziele.protGoal} g`;

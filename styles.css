@@ -119,11 +119,7 @@ textarea {
 	overflow-y: auto;
 	overscroll-behavior: contain;
 	-webkit-overflow-scrolling: touch;
-	display: flex;
-	flex-direction: column;
-	gap: 5px;
-	margin: 0;
-	padding: 0 15px 10px;
+	padding: 0 15px 40px;
 	list-style: none;
 	scrollbar-width: thin;
 	scrollbar-color: var(--accentCol) transparent;
@@ -345,7 +341,7 @@ h2 {
 	text-align: center;
 	background-color: var(--accentCol);
 	border-radius: 50px;
-	border-bottom: 5px solid var(--btnBorder);
+	/* border-bottom: 5px solid var(--btnBorder); */
 	margin: 10px 15px;
 	font-size: 1.15rem;
 	padding: 4px 10px;
@@ -363,12 +359,13 @@ li {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	gap: 5px;
-	width: 100%;
+	padding: 10px;
+	border-radius: 10px;
 }
 
 li:hover {
 	background-color: var(--hoverCol);
+	cursor: pointer;
 }
 
 .eintrag {

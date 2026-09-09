@@ -212,6 +212,19 @@ tagesliste.addEventListener("click", (e) => {
         Render.render(eintraege, ziele, heute);
         return;
     }
+
+    const eintrag = eintraege.find(x => x.id == id);
+    if(!eintrag) return;
+
+    const eingabe = prompt(`neue Menge für ${eintrag.name}:`, eintrag.gramm);
+    if(eingabe == null) return;
+
+    const menge = Number(eingabe.trim());
+    if(menge <= 0) return;
+
+    eintrag.gramm = menge;
+    Speicher.speichern(eintraege, ziele);
+    Render.render(eintraege, ziele, heute);
 })
 
 
