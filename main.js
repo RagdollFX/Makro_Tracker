@@ -104,7 +104,7 @@ addButton.addEventListener("click", () => {
     overlay.classList.remove("hidden");
 })
 
-overlay.addEventListener("click", () => {
+document.querySelectorAll(".closePfl").forEach(btn => {btn.addEventListener("click", () => {
     addContainer.classList.add("hidden");
     pflContainer.classList.add("hidden");
     overlay.classList.add("hidden");
@@ -114,7 +114,8 @@ overlay.addEventListener("click", () => {
     Scanner.stop();
     Speicher.speicherFarben(farben);
     console.log(farben)
-})
+});
+});
 
 heuteButton.addEventListener("click", () => {
     angezeigterTag = heute;
